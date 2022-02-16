@@ -111,7 +111,6 @@ package.check <- lapply(packages, FUN = function(x) {
 # Descargamos el fichero de texto y lo almacenamos en un ficgero names.txt en la carpeta data
 file1 <- "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality.names"
 fichero1 <- paste0("./data/names", ".txt")
-#fichero3 <- paste0("./data/white_wine", ".csv")
 download.file(url = file1, destfile = fichero1)
 list.files("./data")
 
@@ -143,9 +142,10 @@ download.file(url = file2, destfile = fichero2)
     
 ```{r}
 
-red_wine <- read.csv(file = "./data/UCIwineQualityRed.csv", sep = ";")
+red_wine <- read.csv(file = "./data/UCIwineQualityRed.csv")
 str(red_wine)
 # Tan solo contiene una variable
+# También podemos ver que no se ha importado de forma correcta ya que la función toma como separador la coma cuando el fichero está separado por punto y coma
 
 
 
@@ -155,14 +155,10 @@ str(red_wine)
 
 ```{r}
 
+red_wine <- read.csv2(file = "./data/UCIwineQualityRed.csv")
+str(red_wine)
 
-
-
-
-
-
-
-
+# En la función read.csv2 el separador por defecto es el punto y coma, por tanto los datos se importan de forma correcta en diferentes columnas
 
 
 ```   
@@ -171,11 +167,9 @@ str(red_wine)
 
 ```{r}
 
-
-
-
-
-
+ UCIwineQualityRed <- read.csv("./data/UCIwineQualityRed.csv", sep=";")
+# Modificamos la ruta que se nos proporciona eliminando todo lo que no sea relativo al proyecto
+# Podemos ver que la modificación que se ha realizado respecto a los dos apartados anteriores es la de indicar dentro de la función read.csv que el separador es ;
 
 
 ```
@@ -183,6 +177,7 @@ str(red_wine)
     
 ```{r}
 
+UCIwineQualityRed <- read_delim("./data/UCIwineQualityRed.csv", delim = ";", escape_double = FALSE, trim_ws = TRUE)
 
 
 ```
