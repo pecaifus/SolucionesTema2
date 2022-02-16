@@ -7,11 +7,11 @@ params:
   lang: ES
 lang: "`r switch(params$lang, ES = 'es-ES', EN = 'en-US')`"
 output:
-  html_document:
-    echo: yes
-    number_sections: yes
-    theme: lumen
-    toc: yes
+  # html_document:
+  #   echo: yes
+  #   number_sections: yes
+  #   theme: lumen
+  #   toc: yes
   # html_notebook:
   #   echo: yes
   #   number_sections: yes
@@ -91,34 +91,13 @@ package.check <- lapply(packages, FUN = function(x) {
 
 ```{r}
 
-
-
-
-
-
+# El conjunto de datos Wine Quality DataSet contiene 12 variables y 4898 registros (observaciones)
 
 
 ```
 ```{r}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Si comparamos el CodeBook que se nos propocriona con el CodeBook idea (tomamos el de la presentación del Tema 1 como ejemplo), podemos ver que nos hace falta mucha información. En el del Wine Quality tan solo se nos indican cuales son las variables que se van a tratar y el número de obervaciones, ni su tipo de dato, ni si hay o no datos faltantes, ni si son variables obtenidas a partir de otras, ni otro tipo de información que puede ser de mucha utilidad como una peqeuña descripción de la variable, las unidades de medida o una lista de valores aceptados
 
 
 
@@ -128,7 +107,8 @@ package.check <- lapply(packages, FUN = function(x) {
 2. El conjunto de datos **Wine Quality Dataset** está dividido en varios ficheros. Un fichero de texto *winequality.names* y dos ficheros con formato **CSV**. Uno para los vinos blancos y otro para los tintos. Usa la función **download.file**, descarga el fichero de texto y cárgalo realizando una lectura línea a línea. ¿Cuántas y cuáles son las variables medidas?. ¿Es posible localizar las variables automáticamente ?
 
 ```{r}
-
+file1 <- "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality.names"
+names <- download.file(url = file1)
 
 
 
