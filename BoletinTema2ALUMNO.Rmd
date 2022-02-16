@@ -107,8 +107,13 @@ package.check <- lapply(packages, FUN = function(x) {
 2. El conjunto de datos **Wine Quality Dataset** está dividido en varios ficheros. Un fichero de texto *winequality.names* y dos ficheros con formato **CSV**. Uno para los vinos blancos y otro para los tintos. Usa la función **download.file**, descarga el fichero de texto y cárgalo realizando una lectura línea a línea. ¿Cuántas y cuáles son las variables medidas?. ¿Es posible localizar las variables automáticamente ?
 
 ```{r}
+
+# Descargamos el fichero de texto y lo almacenamos en un ficgero names.txt en la carpeta data
 file1 <- "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality.names"
-names <- download.file(url = file1)
+fichero1 <- paste0("./data/names", ".txt")
+#fichero3 <- paste0("./data/white_wine", ".csv")
+download.file(url = file1, destfile = fichero1)
+list.files("./data")
 
 
 
@@ -117,7 +122,7 @@ names <- download.file(url = file1)
  
 ```{r}
 
-
+# No es posible identificar las variables directamente a partir de este fichero
 
 ```
  
@@ -126,6 +131,10 @@ names <- download.file(url = file1)
     a.  Identifica la URL para el vino tinto, descárgalo y almacénalo en un un fichero llamado **UCIwineQualityRed.csv**.
     
 ```{r}
+# Descargamos el fichero del vino tinto y lo guardamos en un fichero con el nombre indicado en la carpeta data
+file2 <- "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
+fichero2 <- paste0("./data/UCIwineQualityRed", ".csv")
+download.file(url = file2, destfile = fichero2)
 
 
 ``` 
@@ -134,8 +143,9 @@ names <- download.file(url = file1)
     
 ```{r}
 
-
-
+red_wine <- read.csv(file = "./data/UCIwineQualityRed.csv", sep = ";")
+str(red_wine)
+# Tan solo contiene una variable
 
 
 
