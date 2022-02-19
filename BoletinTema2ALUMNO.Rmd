@@ -275,33 +275,23 @@ FileCodificado2_Latin1 <- read_csv("./data/FileCodificado2_Latin1.csv", locale =
 2. Importa el fichero de datos **ERCA.xls** y lee la información del codebook que se ha proporcionado (fichero **CODEBOOK ERCA.docx**. ¿Cuántas etapas crees que son necesarias para obtener un data frame adecuado ?
 
 ```{r}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+library(readxl)
+ERCA <- read_excel("./data/ERCA.xls")
 
 ```
+
+Por algún motivo que desconozco el fichero ERCA.xls no se importa de forma correcta ya que tan solo consigo importar una sola columna de nombre 2 con 157 observaciones lo cual no concuerda con el fichero proporcionado.
+
+En la primera práctica importamos este mismo archivo pero con la extensión ".xlsx" y si al proporcionado le modificamos su extenxsión actual se pierden los datos.
+
+Habiendo leído el CodeBook, me parece un gran trabajo y muy parecido a lo que consideramos como un CodeBook ideal ya que especifica que signafica cada valor dentro del fichero, proporciona información sobre cómo se han obtenido algunas variables a partir de la combinación de otras, una breve descripción de cada una de ellas y diferentes fórmulas sobre algunas operaciones realizadas. Tan solo le faltaría no mezclar números con cadenas de texto en algunas variables para hacer más amena su importación y posterior tratamiento.
+
+En resumen, para obtener un data frame adecuado serían necesarias diferentes etapas como la nueva consolidación de los datos o su codificación ya que no se impueden importar en eset formato proporcionado.
+
 
 2. La información enviada por un gps se ha almacenado en el fichero `UNIFICADO.txt`. La información relativa al formato de datos de importación se ha extraído de [http://aprs.gids.nl/nmea/#gga](http://aprs.gids.nl/nmea/#gga). Visualiza el fichero de datos con un editor de texto ¿Cómo crees que se podría importar este fichero ? (No se pide que lo importes)
 
 
+A primera vista el fichero me recuerda a los de tipo json por su apareincia semiestructurada. Podemos observar que se incluye la fecha y hora de la recogida de los datos y unas líneas más abajo sus diferentes aspectos y atributos a recoger de cada parámetro.
 
+Para poder importar este fichero tan solo se me ocurre el método de desarrollar un pequeño programa informático como los que hicimos en el primer cuadrimestre en fundamentos de la programación ya que dentro de los diferentes registros la información está separada por comas, lo cuál nos facilitaría mucho su recogida y el código de ese programa.
