@@ -220,25 +220,20 @@ FileCodificado2_Latin1 <- read_csv("./data/FileCodificado2_Latin1.csv", locale =
 
 ```{r}
 
-
-
-
-
-
-
-
-
+library(RMySQL)
+library(DBI)
+con <- dbConnect(RMySQL::MySQL(), 
+                dbname = "tweater", 
+                host = "courses.csrrinzqubik.us-east-1.rds.amazonaws.com", 
+                port = 3306,
+                user = "student",
+                password = "datacamp")
 
 
 
 ```
     a. Muestra la estructura de cada una de las tablas (función `dbListFields`).
 ```{r}
-
-
-
-
-
 
 
 
