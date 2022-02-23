@@ -204,18 +204,6 @@ FileCodificado2_Latin1 <- read_csv("./data/FileCodificado2_Latin1.csv", locale =
 
 2. En este ejercicio veremos el procedimiento para conectarnos a una base de datos remota. Esta base de datos se utiliza en el curso DataCamp **Importing Data in R (part2)**. Es necesario tener instalada la librería **RMySQL**. El siguiente código muestra como establecer la conexión con una base de datos llamada **tweater** que se encuentra en un host remoto **courses.csrrinzqubik.us-east-1.rds.amazonaws.com** y disponemos el puerto, usuario y contraseña para poder acceder.    
 
-
-
-```{ eval=F,echo=T}
-
-
-
-
-
-``` 
-
-
-
     a. Establece la conexión y determina el número de tablas que contiene (funcion `dbListTables`).
 
 ```{r}
@@ -234,38 +222,34 @@ con <- dbConnect(RMySQL::MySQL(),
 ```
     a. Muestra la estructura de cada una de las tablas (función `dbListFields`).
 ```{r}
-
-
-
-```
-
-```{r}
-
-
+#dbListFields(conn = con)
 
 ```
+
+La instrucción comentada nos debería mostrar la estrtuctura de cada una de las tablas pero salta un error diciendo que faltan argumentos
 
     a. Puedes descargar una tabla con la instrucción **dbReadTable**. Descarga cada una de las tabla y almacénalas en una variable del mismo nombre que la tabla correspondiente. Posteriormente muestra su estructura.
    
 ```{r}
 
 
-
-
-
-
-
-
-
+str(con)
+#Id <- dbReadTable(conn = con, name = "Id")
 
 
 ```
+Si vemos la estructura de con, observamos que hay in registro llamado Id, al intentar seleccionarlo no nos deja, salta un mensaje diciendo que tweater.Id no existe, pero supongo que la expresión comentada sería la adecuada para seleccionar ese argumento de la base de datos
+
     a. ¿Qué ocurriría si tuvieses una base de datos con múltiples tablas y **millones** de registros?.
     
     Solución: Hacer una consulta **SQL** a la base de datos y descargar únicamente los registros necesarios. Asignatura *Bases de Datos*   
-```{r}
 
-```
+Si quisiésemos descragar únicamente una tabla de una base de datos que contuviese millones de tablas deberíamos hacer una consulta de lenguaje SQL para seleccionar la table que queremos en concreto.
+
+Sería del siguiente estilo:
+SELECT (tabla deseada)
+from (base de datos donde se encuentra)
+WHICH (algún parámetro por si quisiésemos filtrar o no seleccionar toda la tabla, es opcional)
 
 2. Importa el fichero de datos **ERCA.xls** y lee la información del codebook que se ha proporcionado (fichero **CODEBOOK ERCA.docx**. ¿Cuántas etapas crees que son necesarias para obtener un data frame adecuado ?
 
